@@ -1,6 +1,6 @@
 /**
- * The Queue class contains the functionality to create a new LinkedList of generic type,
- * enqueue or dequeue items, and print the queue.
+ * The Queue class contains the functionality to create a new LinkedList of
+ * generic type, enqueue or dequeue items, and print the queue.
  * 
  * @author Joshua Collins
  * @version 1.0
@@ -11,7 +11,8 @@ public class Queue<T> {
 	private LinkedList<T> queueList;
 
 	/**
-	 * The default constructor. Assigns a new LinkedList of generic type to queueList. 
+	 * The default constructor. Assigns a new LinkedList of generic type to
+	 * queueList.
 	 */
 	public Queue() {
 		this.queueList = new LinkedList<T>();
@@ -23,26 +24,14 @@ public class Queue<T> {
 	 * @param newItem The item to be enqueued.
 	 */
 	public void enqueue(T newItem) {
-		Node<T> currentItem = queueList.getList();
 		Node<T> newNode = new Node<T>();
 		newNode.setData(newItem);
 		newNode.nextNode = null;
 		if (queueList.length == 0) {
 			queueList.addNode(newNode);
 			queueList.length++;
-		}
-		else {
-			for (int i=0; i < queueList.length; i++) { 
-				if (currentItem.nextNode != null) {
-					if (queueList.length !=0) {
-						currentItem = currentItem.nextNode;
-					}
-				}
-				else {
-					currentItem.nextNode = newNode;
-					queueList.length++;
-				}
-			}
+		} else {
+			queueList.addNode(newNode);
 		}
 	}
 
@@ -56,6 +45,15 @@ public class Queue<T> {
 		if (queueList.length != 0) {
 			queueList.head = head.nextNode;
 			queueList.length--;
+			return head.data;
+		} else {
+			return null;
+		}
+	}
+
+	public T getFront() {
+		if (queueList.length != 0) {
+			Node<T> head = queueList.getList();
 			return head.data;
 		} else {
 			return null;
