@@ -36,7 +36,6 @@ public class Queue<T> {
 				if (currentItem.nextNode != null) {
 					if (queueList.length !=0) {
 						currentItem = currentItem.nextNode;
-						//currentItem.nextNode.setData(newItem);
 					}
 				}
 				else {
