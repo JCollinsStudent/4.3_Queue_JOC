@@ -32,7 +32,9 @@ public class Application {
 			}
 			else if (updateChoice.toLowerCase().equals("dequeue")) {
 				String dequeuedItem = myQueue.dequeue();
-				System.out.println("Dequeued item: " + dequeuedItem);
+				System.out.println("Dequeued item: " + dequeuedItem + ".\n\nCurrent Items:");
+				myQueue.printQueue();
+				System.out.println();
 			}
 			else {
 				System.out.println("Invalid Command.");
