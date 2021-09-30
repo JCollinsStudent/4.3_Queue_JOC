@@ -8,12 +8,11 @@
  * @since 2021-08-25
  */
 
-public class LinkedList {
-	
+public class LinkedList<T> {
 
-	Node head;
+	Node<T> head;
 	int length;
-	Node tail;
+	Node<T> tail;
 	
 	/**
 	 * The constructor for linkedList, instantiates a new empty list.
@@ -39,7 +38,7 @@ public class LinkedList {
 	 * The getList method is a getter for the head of the list.
 	 * @return Node The head of the list.
 	 */
-	public Node getList()
+	public Node<T> getList()
 	{
 		return head;
 	}
@@ -48,7 +47,7 @@ public class LinkedList {
 	 * The addNode method is used to add a node to the linked list.
 	 * @param aNode The node to be added.
 	 */
-	public void addNode(Node aNode)
+	public void addNode(Node<T> aNode)
 	{
 		if (isEmpty() ) {
 			head = aNode;
@@ -56,42 +55,41 @@ public class LinkedList {
 			return;
 		}
 		tail.nextNode=aNode;
-		tail=tail.nextNode;
+		tail= tail.nextNode;
 		tail.nextNode=null;
 		length++;
-		
 	}
 
 	/**
 	 * This main method is used to test the linked list.
 	 * @param args Terminal arguments (unused).
 	 */
-	public static void main(String[] args) {
-		LinkedList myList=new LinkedList();
+	// public static void main(String[] args) {
+	// 	LinkedList myList=new LinkedList();
 		
-		Node<Integer> aNode=new Node<Integer>();
-		aNode.setData(1);
-		myList.addNode(aNode);
-		aNode = new Node<Integer>();
-		aNode.setData(2);
-		myList.addNode(aNode);
+	// 	Node<Integer> aNode=new Node<Integer>();
+	// 	aNode.setData(1);
+	// 	myList.addNode(aNode);
+	// 	aNode = new Node<Integer>();
+	// 	aNode.setData(2);
+	// 	myList.addNode(aNode);
 		
-		Node<String> anotherNode = new Node<String>();
-		anotherNode.setData("This is a generic linked list");
-		myList.addNode(anotherNode);
+	// 	Node<String> anotherNode = new Node<String>();
+	// 	anotherNode.setData("This is a generic linked list");
+	// 	myList.addNode(anotherNode);
 		
-		Node<Boolean> boolNode = new Node<Boolean>();
-		boolNode.setData(true);
-		myList.addNode(boolNode);
+	// 	Node<Boolean> boolNode = new Node<Boolean>();
+	// 	boolNode.setData(true);
+	// 	myList.addNode(boolNode);
 		
-		Node tempnode=myList.getList();
-		do 
-		{
-			System.out.println(tempnode.data);
-			tempnode=tempnode.nextNode;
-		} while (tempnode!=null);
+	// 	Node tempnode=myList.getList();
+	// 	do 
+	// 	{
+	// 		System.out.println(tempnode.data);
+	// 		tempnode=tempnode.nextNode;
+	// 	} while (tempnode!=null);
 			
 		
-	}
+	// }
 
 }

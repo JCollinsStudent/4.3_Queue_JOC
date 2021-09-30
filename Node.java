@@ -8,7 +8,7 @@
 class Node<T> {
 	T data;
 
-	Node nextNode;
+	Node<T> nextNode;
 	public Node()
 	{
 		nextNode=null;
@@ -16,10 +16,10 @@ class Node<T> {
 	public void setData(T data) {
 		this.data=data;
 	}
-	public Node getNode() {
+	public Node<T> getNode() {
 		return this;
 	}
-	public void setNextNode(Node nextNode)
+	public void setNextNode(Node<T> nextNode)
 	{
 		this.nextNode=nextNode;
 	}

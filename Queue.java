@@ -1,67 +1,87 @@
+/**
+ * The Queue class contains the functionality to create a new LinkedList of generic type,
+ * enqueue or dequeue items, and print the queue.
+ * 
+ * @author Joshua Collins
+ * @version 1.0
+ * @since 2021-09-29
+ */
 public class Queue<T> {
-	private LinkedList queueList;
+	// The list containing the items to be enqueued or dequeued.
+	private LinkedList<T> queueList;
 
+	/**
+	 * The default constructor. Assigns a new LinkedList of generic type to queueList. 
+	 */
 	public Queue() {
-		this.queueList = new LinkedList();
+		this.queueList = new LinkedList<T>();
 	}
 
+	/**
+	 * The method containing the logic to enqueue an item.
+	 * 
+	 * @param newItem The item to be enqueued.
+	 */
 	public void enqueue(T newItem) {
-		System.out.println("In enqueue");
-		Node currentItem = queueList.getList();
+		Node<T> currentItem = queueList.getList();
+		Node<T> newNode = new Node<T>();
+		newNode.setData(newItem);
+		newNode.nextNode = null;
 		if (queueList.length == 0) {
-			
-			System.out.println("in empty list enqueue");
-			Node newNode = new Node<T>();
-			newNode.setData(newItem);
 			queueList.addNode(newNode);
-			System.out.println("after addNode()");
+			queueList.length++;
 		}
-		for (int i=0; i < queueList.length; i++) { 
-			if (currentItem.nextNode != null) {
-				if (queueList.length !=0) {
-					System.out.println(currentItem.data);
-					currentItem = currentItem.nextNode;
-					//currentItem.nextNode.setData(newItem);
+		else {
+			for (int i=0; i < queueList.length; i++) { 
+				if (currentItem.nextNode != null) {
+					if (queueList.length !=0) {
+						currentItem = currentItem.nextNode;
+						//currentItem.nextNode.setData(newItem);
+					}
+				}
+				else {
+					currentItem.nextNode = newNode;
+					queueList.length++;
 				}
 			}
-			else {
-				currentItem = currentItem.nextNode;
-			}
 		}
 	}
 
+	/**
+	 * The method containing the logic to dequeue an item.
+	 * 
+	 * @return The head of the list after dequeuing the item.
+	 */
 	public T dequeue() {
-		Node head = queueList.getList();
-		if (head.nextNode != null) {
+		Node<T> head = queueList.getList();
+		if (queueList.length != 0) {
 			queueList.head = head.nextNode;
+			queueList.length--;
+			return head.data;
+		} else {
+			return null;
 		}
-
-		return (T) head.data;
 	}
 
+	/**
+	 * The method containing the logic to print the items in the queue.
+	 */
 	public void printQueue() {
 		if (queueList.length != 0) {
-			Node currentItem = queueList.getList();
+			Node<T> currentItem = queueList.getList();
 			while (currentItem != null) {
 				System.out.println(currentItem.data);
 				currentItem = currentItem.nextNode;
 			}
-			//System.out.println("currentItem.data = " + currentItem.data);
-			//for (int i=0; i<queueList.length; i++) {
-			//	System.out.println(currentItem.data);
-			//	if (currentItem.nextNode != null) {
-			//		currentItem = currentItem.nextNode;
-			//	}
-			//}
 		}
-		else {
-			System.out.println("length is 0");
-		}
-
-
 	}
 
-	public LinkedList getQueue() {
+	/**
+	 * The getter for the queueList.
+	 * 
+	 * @return queueList
+	 */
+	public LinkedList<T> getQueue() {
 		return this.queueList;
 	}
 }
