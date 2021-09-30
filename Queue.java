@@ -51,6 +51,11 @@ public class Queue<T> {
 		}
 	}
 
+	/**
+	 * The getter for the front of the list.
+	 * 
+	 * @return The front of the list.
+	 */
 	public T getFront() {
 		if (queueList.length != 0) {
 			Node<T> head = queueList.getList();
